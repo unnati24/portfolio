@@ -10,7 +10,7 @@ $background-opacity: 0.9;
 
 @mixin background {
   @if $show-image {
-    &#bg-img {
+    &#main-img {
       background: $home-image;
       background-attachment: fixed;
       background-size: cover;
@@ -26,5 +26,50 @@ $background-opacity: 0.9;
         background: rgba($primary-color, $background-opacity);
       }
     }
+  }
+
+  @if $show-image {
+    &#contact-img {
+      background: $home-image;
+      background-attachment: fixed;
+      background-size: cover;
+
+      &:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 2280px;
+        height: 1280px;
+        z-index: -1;
+        background: rgba($primary-color, $background-opacity);
+      }
+    }
+  }
+}
+
+//Media query mixins
+
+@mixin media-small {
+  @media screen and (max-width: 500px) {
+    @content;
+  }
+}
+
+@mixin media-medium {
+  @media screen and (max-width: 768px) {
+    @content;
+  }
+}
+
+@mixin media-large {
+  @media screen and (min-width: 769px) and (max-width: 1170px) {
+    @content;
+  }
+}
+
+@mixin media-xLarge {
+  @media screen and (min-width: 1171px) {
+    @content;
   }
 }
