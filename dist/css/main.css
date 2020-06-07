@@ -351,7 +351,7 @@ main#home h1 {
 
 #content-wrapper .items-wrapper {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
 }
 
 #content-wrapper .item-wrapper {
@@ -359,7 +359,7 @@ main#home h1 {
 }
 
 #content-wrapper .item-img-background {
-  height: 360px;
+  height: 400px;
   width: 100%;
   background-size: cover;
   background-position: center;
@@ -375,8 +375,8 @@ main#home h1 {
   align-items: center;
   height: 100%;
   text-align: center;
-  padding-left: 100px;
-  padding-right: 100px;
+  padding-left: 25px;
+  padding-right: 25px;
 }
 
 #content-wrapper .text-wrapper:hover {
@@ -386,14 +386,36 @@ main#home h1 {
 
 #content-wrapper .text-wrapper:hover .subtitle {
   color: #eece1a;
-  font-weight: 600;
   transition: all 0.5s ease-out;
 }
 
+#content-wrapper .text-wrapper:hover p {
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #eece1a;
+}
+
+#content-wrapper .text-wrapper:hover .proj-btns button {
+  display: inline;
+}
+
+#content-wrapper .text-wrapper:hover .proj-btns button:hover {
+  transform: scale(1.1);
+  transition: all 0.9s ease-in-out;
+}
+
 #content-wrapper .subtitle {
-  font-weight: 600;
   color: transparent;
-  font-size: 3rem;
+  font-size: 1rem;
+}
+
+#content-wrapper .proj-btns button {
+  display: none;
+  background: none;
+  color: #eece1a;
+  border: 2px solid #eece1a;
+  border-radius: 8px;
+  padding: 10px 20px;
+  margin-right: 5px;
 }
 
 .container {
@@ -495,6 +517,12 @@ main#home h1 {
   }
 }
 
+@media screen and (min-width: 769px) and (max-width: 1170px) {
+  #content-wrapper .items-wrapper {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media screen and (max-width: 768px) {
   main {
     align-items: center;
@@ -530,9 +558,6 @@ main#home h1 {
   .about-info {
     grid-template-areas: "bioimage" "bio" "techhead" "techstack";
     grid-template-columns: 1fr;
-  }
-  #content-wrapper .items-wrapper {
-    grid-template-columns: repeat(2, 1fr);
   }
   .icons {
     align-items: center;

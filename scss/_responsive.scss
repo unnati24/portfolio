@@ -14,6 +14,11 @@
 }
 
 @include media-large {
+  #content-wrapper {
+    .items-wrapper {
+      grid-template-columns: 1fr;
+    }
+  }
 }
 
 @include media-medium {
@@ -62,12 +67,6 @@
       "techstack";
 
     grid-template-columns: 1fr;
-  }
-
-  #content-wrapper {
-    .items-wrapper {
-      grid-template-columns: repeat(2, 1fr);
-    }
   }
 
   .icons {

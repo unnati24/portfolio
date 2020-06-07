@@ -1,3 +1,5 @@
+// import * as config from "../../config";
+
 const menuBtn = document.querySelector(".menu-btn");
 const menu = document.querySelector(".menu");
 const menuNav = document.querySelector(".menu-nav");
@@ -30,15 +32,28 @@ function toggleMenu() {
   }
 }
 
-//Firebase Initialization
-let config = {};
-firebase.initializeApp(config);
+const configFunc = () => {
+  //Firebase Initialization
+  let configFire = {
+    apiKey: config.API_KEY,
+    authDomain: config.AUTH_DOMAIN,
+    databaseURL: config.DB_URL,
+    projectId: config.PROJECT_ID,
+    storageBucket: config.STORAGE,
+    messagingSenderId: config.MESSAGE_ID,
+    appId: config.APP_ID,
+    measurementId: config.MEASUREMENT_ID,
+  };
 
-// Reference messages collection
-let messagesRef = firebase.database().ref("messages");
+  firebase.initializeApp(configFire);
+
+  // Reference messages collection
+  let messagesRef = firebase.database().ref("messages");
+};
 
 // Listen for form submit
-document.getElementById("contactForm").addEventListener("submit", submitForm);
+if (document.getElementById("contactForm"))
+  document.getElementById("contactForm").addEventListener("submit", submitForm);
 
 // Submit form
 function submitForm(e) {
@@ -71,6 +86,7 @@ function submitForm(e) {
 
 // Save message to firebase
 function saveMessage(name, company, email, phone, message, alertMessage) {
+  configFunc();
   let newMessageRef = messagesRef.push();
   newMessageRef
     .set({
