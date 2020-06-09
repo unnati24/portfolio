@@ -35,6 +35,12 @@
       }
     }
   }
+
+  &:hover {
+    .btn-line {
+      background: $secondary-color;
+    }
+  }
 }
 
 //Menu overlay
@@ -64,7 +70,7 @@
   &-nav {
     margin: 0;
     padding: 0;
-    background: darken($primary-color, 0.5);
+    background: darken($primary-color, 2);
     list-style: none;
     transform: translate3d(0, -100%, 0);
     @include ease-out;
@@ -89,7 +95,7 @@
     .portrait {
       width: 300px;
       height: 300px;
-      background: url(../img/portrait.jpg);
+      background: url(../assets/portrait.jpg);
       background-size: cover;
       border-radius: 50%;
       border: solid 3px $secondary-color;
@@ -98,6 +104,7 @@
   .nav-item {
     transform: translate3d(600px, 0, 0);
     @include ease-out;
+    cursor: pointer;
 
     &.show {
       //slide in from right

@@ -1,5 +1,3 @@
-// import * as config from "../../config";
-
 const menuBtn = document.querySelector(".menu-btn");
 const menu = document.querySelector(".menu");
 const menuNav = document.querySelector(".menu-nav");
@@ -32,8 +30,9 @@ function toggleMenu() {
   }
 }
 
+//Firebase Initialization
+
 const configFunc = () => {
-  //Firebase Initialization
   let configFire = {
     apiKey: config.API_KEY,
     authDomain: config.AUTH_DOMAIN,
@@ -49,6 +48,7 @@ const configFunc = () => {
 
   // Reference messages collection
   let messagesRef = firebase.database().ref("messages");
+  return messagesRef;
 };
 
 // Listen for form submit
@@ -81,12 +81,12 @@ function submitForm(e) {
   // Hide alert after 3 seconds
   setTimeout(function () {
     document.querySelector("#alert").style.display = "none";
-  }, 3000);
+  }, 8000);
 }
 
 // Save message to firebase
 function saveMessage(name, company, email, phone, message, alertMessage) {
-  configFunc();
+  let messagesRef = configFunc();
   let newMessageRef = messagesRef.push();
   newMessageRef
     .set({
@@ -108,6 +108,8 @@ function saveMessage(name, company, email, phone, message, alertMessage) {
   // Clear form
   document.getElementById("contactForm").reset();
 }
+
+//Contact form validation
 
 function validate(name, company, email, phone, message, alertMessage) {
   if (name.length < 5) {
@@ -144,3 +146,69 @@ function validate(name, company, email, phone, message, alertMessage) {
 
   return true;
 }
+
+//Display controls for nav-items and active link styling
+
+navItems[0].addEventListener("click", () => {
+  document.getElementById("home").style.display = "block";
+  document.getElementById("about").style.display = "none";
+  document.getElementById("projects").style.display = "none";
+  document.getElementById("contact").style.display = "none";
+
+  navItems[0].classList.add("current");
+  navItems[1].classList.remove("current");
+  navItems[2].classList.remove("current");
+  navItems[3].classList.remove("current");
+  toggleMenu();
+
+  window.scrollTo(0, 0);
+  document.getElementById("main-img").classList.add("overflow");
+});
+
+navItems[1].addEventListener("click", () => {
+  document.getElementById("home").style.display = "none";
+  document.getElementById("about").style.display = "block";
+  document.getElementById("projects").style.display = "none";
+  document.getElementById("contact").style.display = "none";
+
+  navItems[0].classList.remove("current");
+  navItems[1].classList.add("current");
+  navItems[2].classList.remove("current");
+  navItems[3].classList.remove("current");
+  toggleMenu();
+
+  window.scrollTo(0, 0);
+  document.getElementById("main-img").classList.remove("overflow");
+});
+
+navItems[2].addEventListener("click", () => {
+  document.getElementById("home").style.display = "none";
+  document.getElementById("about").style.display = "none";
+  document.getElementById("projects").style.display = "block";
+  document.getElementById("contact").style.display = "none";
+
+  navItems[0].classList.remove("current");
+  navItems[1].classList.remove("current");
+  navItems[2].classList.add("current");
+  navItems[3].classList.remove("current");
+  toggleMenu();
+
+  window.scrollTo(0, 0);
+  document.getElementById("main-img").classList.remove("overflow");
+});
+
+navItems[3].addEventListener("click", () => {
+  document.getElementById("home").style.display = "none";
+  document.getElementById("about").style.display = "none";
+  document.getElementById("projects").style.display = "none";
+  document.getElementById("contact").style.display = "block";
+
+  navItems[0].classList.remove("current");
+  navItems[1].classList.remove("current");
+  navItems[2].classList.remove("current");
+  navItems[3].classList.add("current");
+  toggleMenu();
+
+  window.scrollTo(0, 0);
+  document.getElementById("main-img").classList.remove("overflow");
+});

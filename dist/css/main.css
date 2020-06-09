@@ -33,6 +33,10 @@
   background: #eece1a;
 }
 
+.menu-btn:hover .btn-line {
+  background: #eece1a;
+}
+
 .menu {
   position: fixed;
   top: 0;
@@ -59,7 +63,7 @@
 .menu-nav {
   margin: 0;
   padding: 0;
-  background: #2b2b2b;
+  background: #272727;
   list-style: none;
   transform: translate3d(0, -100%, 0);
   transition: all 0.5s ease-out;
@@ -82,7 +86,7 @@
 .menu-branding .portrait {
   width: 300px;
   height: 300px;
-  background: url(../img/portrait.jpg);
+  background: url(../assets/portrait.jpg);
   background-size: cover;
   border-radius: 50%;
   border: solid 3px #eece1a;
@@ -91,6 +95,7 @@
 .menu .nav-item {
   transform: translate3d(600px, 0, 0);
   transition: all 0.5s ease-out;
+  cursor: pointer;
 }
 
 .menu .nav-item.show {
@@ -147,7 +152,7 @@ body {
 }
 
 body#main-img {
-  background: url(../img/background.jpg);
+  background: url(../assets/background.jpg);
   background-attachment: fixed;
   background-size: cover;
 }
@@ -164,7 +169,7 @@ body#main-img:after {
 }
 
 body#contact-img {
-  background: url(../img/background.jpg);
+  background: url(../assets/background.jpg);
   background-attachment: fixed;
   background-size: cover;
 }
@@ -180,6 +185,10 @@ body#contact-img:after {
   background: rgba(44, 44, 44, 0.9);
 }
 
+.overflow {
+  overflow: hidden;
+}
+
 h1,
 h2,
 h3 {
@@ -190,14 +199,14 @@ h3 {
 h1.lg-heading,
 h2.lg-heading,
 h3.lg-heading {
-  font-size: 5rem;
+  font-size: 5.5rem;
 }
 
 h1.md-heading,
 h2.md-heading,
 h3.md-heading {
   font-size: 1.5rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   padding: 0.2 rem 1 rem;
 }
 
@@ -205,7 +214,7 @@ h1.sm-heading,
 h2.sm-heading,
 h3.sm-heading {
   font-size: 1.2rem;
-  margin-bottom: 2rem;
+  margin-bottom: 0.5rem;
   padding: 0.2 rem 1 rem;
 }
 
@@ -229,8 +238,12 @@ main {
   height: 100%;
 }
 
+main#projects {
+  padding: 0;
+}
+
 main .icons {
-  margin-top: 1rem;
+  margin-top: 0.5rem;
   display: flex;
   flex-wrap: wrap;
 }
@@ -274,7 +287,17 @@ main#home {
 }
 
 main#home h1 {
-  margin-top: 20vh;
+  margin-top: 10vh;
+}
+
+main#home #mailto:hover {
+  color: #eece1a;
+}
+
+#about,
+#projects,
+#contact {
+  display: none;
 }
 
 .about-info {
@@ -284,13 +307,10 @@ main#home h1 {
   grid-template-columns: repeat(3, 1fr);
 }
 
-.about-info h3,
 .about-info p {
+  padding-top: 20px;
   font-family: "Raleway", sans-serif;
-}
-
-.about-info p {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
 }
 
 .bio-image {
@@ -344,7 +364,7 @@ main#home h1 {
 }
 
 .tech-stack figure figcaption {
-  padding-top: 10px;
+  padding: 10px;
   font-weight: 500;
   text-align: center;
 }
@@ -479,6 +499,12 @@ main#home h1 {
   font-size: 1rem;
 }
 
+.contact form p button::placeholder,
+.contact form p input::placeholder,
+.contact form p textarea::placeholder {
+  font-size: 0.8rem;
+}
+
 .contact form p button {
   background: #c6ab0f;
   border: 0;
@@ -505,6 +531,9 @@ main#home h1 {
 }
 
 @media screen and (min-width: 1171px) {
+  body#main-img::after {
+    height: 780px;
+  }
   .wrapper {
     display: grid;
     grid-template-columns: 1fr 3fr;
@@ -518,17 +547,24 @@ main#home h1 {
 }
 
 @media screen and (min-width: 769px) and (max-width: 1170px) {
+  body#main-img::after {
+    height: 1080px;
+  }
   #content-wrapper .items-wrapper {
     grid-template-columns: 1fr;
   }
 }
 
 @media screen and (max-width: 768px) {
+  body#main-img::after {
+    height: 1280px;
+  }
   main {
     align-items: center;
     text-align: center;
   }
   main .lg-heading {
+    font-size: 4.5rem;
     line-height: 1;
     margin-bottom: 1rem;
   }
@@ -578,6 +614,9 @@ main#home h1 {
 }
 
 @media screen and (max-width: 500px) {
+  body#main-img::after {
+    height: 2080px;
+  }
   main#home h1 {
     margin-top: 10vh;
   }
